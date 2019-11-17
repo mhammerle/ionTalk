@@ -1,14 +1,33 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
+    <ion-title *ngIf="nickName !== ''">
+      Welcome to IonChat, {{ nickName }}
+    </ion-title>
+    <ion-title *ngIf="nickName === ''">
+        Welcome to IonChat, {{ guestName }}
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-item>
+    <ion-label position="fixed"></ion-label>
+    <ion-input type="text" [(ngModel)]="nickName" placeholder="Write your nickname" (keyup)="setNickName()"></ion-input>
+  </ion-item>
+
+  <h3>Choose your chat room:</h3>
+ 
+  <button ion-button (click)="onRoomSelected('movies')">
+      <ion-icon name="desktop"> </ion-icon>
+        Movies
+    </button>
+    <button ion-button (click)="onRoomSelected('sports')">
+      <ion-icon name="american-football"> </ion-icon>
+        Sports
+    </button>
+    <button ion-button type="button" (click)="onRoomSelected('others')">
+      <ion-icon name="happy"> </ion-icon>
+        Various Subjects
+    </button>
+
 </ion-content>

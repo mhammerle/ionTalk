@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Movies Chat</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="backHome()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card id='text-box'>
+    <p *ngFor="let sys of systemList">
+      At {{ sys.date | date: 'dd/MM/yyyy hh:mm:ss' }}, {{ sys.user }} says: {{ sys.msg }}
+    </p>
+    <hr>
+    <p *ngFor="let sys of chatList">
+        At {{ sys.date | date: 'dd/MM/yyyy hh:mm:ss' }}, {{ sys.user }} says: {{ sys.msg }}
+    </p>
+  </ion-card>
+  <ion-card id="buttons">
+      <ion-item>
+          <ion-input type="text" placeholder="Write something" #newmsg></ion-input>
+          <button ion-button item-end id="send-button" (click)="sendMsg(newmsg.value)">Send</button>
+      </ion-item>
+  </ion-card>
+
+</ion-content>
